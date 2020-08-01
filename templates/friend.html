@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing:border-box;
+}
+img {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+.tej99 {
+    margin-left:450px;
+    margin-right:auto;
+}
+.button
+{
+  display:block;
+  margin:0 auto;
+  height:50px;
+  width:600px;
+  background-color:yellow;
+  font-size:200%;
+}
+.button1
+{
+display:block;
+margin-left:452px;
+margin-right:auto;
+}
+.teju
+{
+ display:block;
+ float:left;
+ margin-left:500px;
+ margin-right:auto;
+ margin-top:10px;
+}
+.teju1
+{
+display:block;
+float:left;
+margin-left:100px;
+margin-right:auto;
+margin-top:10px;
+}
+.teju2::after {
+   content:"";
+   clear: both;
+   display:table;
+}
+.txt {
+ display:block;
+ margin-left:500px;
+ margin-right:auto;
+ margin-top:0px;
+ margin-bottom:auto;
+ width:500px;
+ }
+h1 {
+  margin-left:450px;
+  margin-right:auto;
+}
+i {
+  margin-left:500px;
+  margin-right:auto;
+}
+p {
+  margin-left:auto;
+  margin-right:auto;
+}
+</style>
+</head>
+<body>
+<form action=index method="post" >
+<input class="button1" type="submit" value="VIEW PROFILE">
+<input type='hidden' name='username' value={{username}}>
+</form>
+<form action="logout" method="post">
+<input class="button1" type="submit" value="logout">
+</form>
+{% for post in posts %}
+<h1> {{post.postedby}} </h1>
+<img  src={{post.url}} alt="error loading image" style="width:40%">
+<div class="teju2">
+<div class="teju">
+<form action="">
+<input type="image" src="http://www.free-icons-download.net/images/symbol-thumbs-up-icon-72618.png" alt="thumbsup" width="90" height="90" title="like" onclick="myFunction()">
+<script>
+function myFunction() {
+var lines="<!DOCTYPE html><body><form action='clicklike' method='post'><input type='hidden' name='username' value={{username}}><input type='hidden' name='userid' value={{userid}}><input type='hidden' name='likes' value={{post.likes+1}}> <input type='hidden' name='postid' value={{post.postid}} ><input type='submit' value='like?'></form></body>"
+document.write(lines);
+}
+</script>
+<p>{{post.likes}} likes</p><br>
+</form>
+</div>
+<div class="teju1">
+<form action="" method="post">
+<input type="image" src="http://is4.mzstatic.com/image/thumb/Purple71/v4/1e/51/b2/1e51b262-3464-9794-6b62-b11194c246dd/source/512x512bb.jpg" alt="follow" width="70" height="70" title="follow" onclick="myfFunction()">
+<script>
+function myfFunction() {
+var lines="<!DOCTYPE html><html><body><form action='follow' method='post'><input type='hidden' name='username' value={{username}}><input type='hidden' name='userid' value={{userid}}><input type='hidden' name='friendname' value={{post.postedby}}><input type='submit' value='follow?'></form></body></html>"
+document.write(lines);
+}
+</script>
+</form>
+</div>
+<div class="teju1">
+<form action="" method="post">
+<input type="image" src="https://cdn1.iconfinder.com/data/icons/app-web-basics/100/icon-05-512.png" alt="unfollow" width="70" height="70" title="unfollow" onclick="fmyFunction()">
+<script>
+function fmyFunction() {
+var lines="<!DOCTYPE html><html><body><form action='unfollow' method='post'><input type='hidden' name='username' value={{username}}><input type='hidden' name='userid' value={{userid}}><input type='hidden' name='friendname' value={{post.postedby}}><input type='submit' value='unfollow?'></form></body></html>"
+document.write(lines);
+}
+</script>
+</form>
+</div>
+</div>
+<form>
+</form>
+<form class="teju" method="post" action=" ">
+<button onclick="myFunctionf()">addcomment</button>
+<script>
+function myFunctionf() {
+var lines="<!DOCTYPE html><html><body><form action='comment' method='post'><input type='hidden' name='username' value={{username}}><input type='hidden' name='userid' value={{userid}}><input type='hidden' name='postid' value={{post.postid}}><h1>addcomment</h1><input type='text' name='comment'><input type='submit' value='addcomment?'></form></body></html>"
+document.write(lines);
+}
+</script>
+</form>
+<br> <br>
+{% if post.follow == True %}
+<p>following</p>
+{% endif %}
+{% endfor %}
+<p hidden>username:{{username}}</p>
+<p hidden>userid:{{userid}}</p>
+</body>
+</html>

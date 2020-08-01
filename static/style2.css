@@ -1,0 +1,21 @@
+.container1 {
+	margin-left:400px;
+	margin-right:auto;
+	margin-top:100px;
+	margin-bottom:auto;
+	background-color:lightgrey;
+	width:350px;
+	border:20px black;
+	padding:150px;
+}
+h1 {
+   text-align:center;
+}
+.register {
+   margin-top:10px;
+   width:500px;
+}
+input[type=submit] {
+  width:20em;
+  height:5em;
+}	
